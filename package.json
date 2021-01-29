@@ -1,0 +1,43 @@
+{
+  "name": "omniscience",
+  "version": "1.0.0",
+  "description": "Discord bot for fetching useful info",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "dev": "nodemon src/index.ts",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
+    "serve": "node dist/index.js",
+    "serve-debug": "nodemon --inspect dist/index.js",
+    "start": "npm run serve",
+    "test": "jest --forceExit --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FOSSforlife/discord-bot-2021.git"
+  },
+  "author": "Elias Jackson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FOSSforlife/discord-bot-2021/issues"
+  },
+  "homepage": "https://github.com/FOSSforlife/discord-bot-2021#readme",
+  "dependencies": {
+    "@prisma/client": "^2.15.0",
+    "discord-akairo": "^8.1.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.15.0",
+    "@types/node": "^14.14.22",
+    "@types/ws": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "eslint": "^7.18.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
