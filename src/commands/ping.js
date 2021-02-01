@@ -1,4 +1,4 @@
-import { Command } from 'discord-akairo';
+const { Command } = require('discord-akairo');
 
 class PingCommand extends Command {
   constructor() {

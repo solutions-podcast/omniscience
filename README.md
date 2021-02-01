@@ -2,9 +2,10 @@
 
 ![Omniscience Logo](./logo.jpg)
 
-This is a bot that looks up useful research information on any topic.
+This is a bot that looks up useful research information on any topic. Primarily for use in the [Solutions](https://medium.com/solutions) Discord server but I'll probably let others use it too.
 
 ## Search Engines
+
 - Wikipedia
 - Merriam-Webster
 - Reddit
@@ -21,6 +22,7 @@ This is a bot that looks up useful research information on any topic.
 - Charity Navigator
 
 ## Other Useful Data
+
 - Awesome Public Datasets
 - Census.gov
 - COVID Data
@@ -32,5 +34,7 @@ This is a bot that looks up useful research information on any topic.
 - World Bank
 
 ## Utilities
+
+- MBFC (https://raw.githubusercontent.com/drmikecrowe/mbfcext/master/docs/v2/combined.json)
 - Outline.com
 - Sci-Hub

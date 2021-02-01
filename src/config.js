@@ -1,8 +1,8 @@
-import * as dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
-export default {
-  prefix: process.env.BOT_PREFIX ?? '',
-  ownerID: process.env.BOT_OWNER_ID ?? '',
-  token: process.env.DISCORD_API_TOKEN ?? '',
+module.exports = {
+  prefix: process.env.BOT_PREFIX || '',
+  ownerID: process.env.BOT_OWNER_ID || '',
+  token: process.env.DISCORD_API_TOKEN || '',
 };

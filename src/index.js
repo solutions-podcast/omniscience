@@ -1,14 +1,13 @@
-import { PrismaClient } from '@prisma/client';
-import {
+const {
   AkairoClient,
   CommandHandler,
   InhibitorHandler,
   ListenerHandler,
-} from 'discord-akairo';
-import config from './config';
-import * as path from 'path';
+} = require('discord-akairo');
+const config = require('./config');
+const path = require('path');
 
-export class MyClient extends AkairoClient {
+class MyClient extends AkairoClient {
   constructor() {
     super(
       {
@@ -36,10 +35,10 @@ export class MyClient extends AkairoClient {
     });
     this.commandHandler.useListenerHandler(this.listenerHandler);
     this.listenerHandler.loadAll();
-
-    this.db = new PrismaClient();
   }
 }
 
 const client = new MyClient();
 client.login(config.token);
+
+module.exports = MyClient;
