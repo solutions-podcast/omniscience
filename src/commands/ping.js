@@ -13,3 +13,5 @@ class PingCommand extends Command {
 }
 
 module.exports = PingCommand;
+
+// https://github.com/wikipedia-bot/wikipedia-bot/blob/master/modules/requests.js
