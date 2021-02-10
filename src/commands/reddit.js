@@ -22,38 +22,39 @@ class RedditCommand extends Command {
     const query = queryWords.join(' ');
 
     const r = new snoowrap(config.reddit);
-    const searchResults = await r.search({
-      query,
-      subreddit,
-      restrictSr: true,
-      limit: 3
-    });
-    console.log(searchResults[0])
-    console.log(searchResults[0].link)
+
+    let searchResults;
+    if(query.length > 0) {
+      searchResults = await r.search({
+        query,
+        subreddit,
+        restrictSr: true,
+        limit: 3
+      });
+    }
+    else {
+      searchResults = await r.getSubreddit(subreddit).getHot({limit: 3});
+    }
 
     // TODO: If subreddit doesn't exist, return error message
 
     return message.channel.send({
       embed: {
-        color: '#ff9900',
+        color: '#ff5500',
         author: {
-          icon_url: '',
+          icon_url: 'https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png',
           name: `Reddit`,
         },
-        thumbnail: {
-          url: '',
-        },
-        // title: `Results from /r/${subreddit}: "${query}"`,
         url: `https://reddit.com/r/${subreddit}`,
         fields: [
           {
-            name: `/r/${subreddit} search: "${query}"`,
+            name: query.length > 0 ? `/r/${subreddit} search: "${query}"` : `Hot posts in /r/${subreddit}`,
             value: searchResults.map(formatPost).join('\n')
           }
         ],
         timestamp: new Date(),
         footer: {
-          icon_url: '',
+          icon_url: 'https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png',
           text: 'Source: reddit.com'
         }
       }
