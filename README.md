@@ -47,7 +47,7 @@ Soon we will have a Project set up inside this repo where you can look at our ro
 
 1. Install Node.js.
 2. Create a Discord server to use as a sandbox. This is where your development bot will live.
-3. Go to the Discord Developer Portal and create a new bot. Invite this bot to your new server (it will be offline for now). Save the bot token for the next step.
+3. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new bot. Invite this bot to your new server (it will be offline for now). Save the bot token for the next step.
 4. Clone this repo
 5. In the cloned repo, copy  `.env.example` to `.env` and fill in the following secrets:
   a. `BOT_PREFIX` = A prefix of your choice, e.g. `!`
