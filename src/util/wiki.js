@@ -21,15 +21,23 @@ async function getWikiEmbed(query, apiUrl, siteName, iconUrl) {
     wikiPage.raw.title,
     wikiPage.raw.fullurl,
     wikiPage.mainImage(),
-    wikiPage.info(),
     wikiPage.summary(),
+    // wikiPage.info(), // doesn't work
+    // wikiPage.rawInfo(), // metadata
+    // wikiPage.fullInfo(), // nothing
+    // wikiPage.html(), // html
+    // wikiPage.content(), // sections
+    // wikiPage.rawContent(), // same as summary
+    // wikiPage.sections(), // sections
   ]);
 
-  console.log(wikiPage);
-  console.log(wikiPageData);
-  let shortenedSummary = wikiPageData[3].split('\n');
-  shortenedSummary = shortenedSummary.slice(0, 2);
-  shortenedSummary = shortenedSummary.toString().substring(0, 768) + '...';
+
+  let shortenedSummary = wikiPageData[3]
+    ? wikiPageData[3].split('\n')
+      .slice(0, 2)
+      .toString()
+      .substring(0, 768) + '...'
+    : '';
 
   return {
     embed: {
