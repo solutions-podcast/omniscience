@@ -10,5 +10,8 @@ module.exports = {
     clientId: process.env.REDDIT_CLIENT_ID || '',
     clientSecret: process.env.REDDIT_CLIENT_SECRET || '',
     refreshToken: process.env.REDDIT_REFRESH_TOKEN || '',
-  }
+  },
+  google: {
+    apiKey: process.env.GOOGLE_API_KEY || '',
+  },
 };

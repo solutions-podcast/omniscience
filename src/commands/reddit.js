@@ -29,7 +29,7 @@ class RedditCommand extends Command {
         query,
         subreddit,
         restrictSr: true,
-        limit: 3
+        limit: 5
       });
     }
     else {
