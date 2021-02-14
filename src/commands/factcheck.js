@@ -4,8 +4,11 @@ const config = require('../config');
 const { getLastPost } = require('../util/getLastPost');
 
 const toEmbedField = (result) => ({
-  name: result.text,
-  value: `[${result.claimReview[0].publisher.name}: ${result.claimReview[0].textualRating}](${result.claimReview[0].url})`,
+  name: `${result.text} (${result.claimant})`,
+  value: result.claimReview.map(
+    (review) =>
+      `[${review.publisher.name}: ${review.textualRating}](${review.url})`
+  ),
 });
 
 class FactCheckCommand extends Command {

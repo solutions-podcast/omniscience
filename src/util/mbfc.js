@@ -41,7 +41,7 @@ const createEmbed = (entry) => ({
         value: reportingScale[entry.r],
       },
       {
-        name: 'View on MBFC',
+        name: 'MBFC Detailed Analysis',
         value: `https://mediabiasfactcheck.com/${entry.u}`,
       },
     ],
