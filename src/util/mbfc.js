@@ -1,6 +1,7 @@
 // TODO: Make this into an NPM package
+// TODO: Unit tests
 
-const { aliases, sources } = require('./mbfc-data.json');
+const { aliases, biases, sources } = require('./mbfc-data.json');
 
 const reportingScale = {
   VH: 'Very High',
@@ -8,7 +9,7 @@ const reportingScale = {
   MF: 'Mostly Factual',
   M: 'Mixed',
   L: 'Low',
-  VL: 'Very Low,',
+  VL: 'Very Low',
 };
 
 const biasScale = {
@@ -23,6 +24,18 @@ const biasScale = {
   FN: 'Questionable Sources',
 };
 
+const biasInfo = {
+  L: biases['left'],
+  LC: biases['left-center'],
+  C: biases['center'],
+  RC: biases['right-center'],
+  R: biases['right'],
+  PS: biases['pro-science'],
+  CP: biases['conspiracy'],
+  S: biases['satire'],
+  FN: biases['fake-news'],
+}
+
 const createEmbed = (entry) => ({
   embed: {
     color: '#ff0000',
@@ -33,12 +46,12 @@ const createEmbed = (entry) => ({
     url: `https://mediabiasfactcheck.com/${entry.u}`,
     fields: [
       {
-        name: 'Bias',
-        value: biasScale[entry.b],
-      },
-      {
         name: 'Factual Reporting',
         value: reportingScale[entry.r],
+      },
+      {
+        name: 'Bias',
+        value: `${biasScale[entry.b]}: ${biasInfo[entry.b].description}`,
       },
       {
         name: 'MBFC Detailed Analysis',
@@ -52,18 +65,41 @@ const createEmbed = (entry) => ({
   },
 });
 
-function mbfcFromURL(url) {
-  // TODO: handle full URLs
-  // TODO: handle titles (including .toLowercase())
+function getMbfcEntry(input) {
   // TODO: handle aliases
 
-  const mbfcEntry = sources[url];
-  if (mbfcEntry === undefined) {
-    throw 'No entry found';
+  if(!input) {
+    throw 'No input given';
   }
-  return createEmbed(mbfcEntry);
+
+  input = input.toLowerCase().trim();
+
+  for(let [alias, entryUrl] of Object.entries(aliases)) {
+    if(input.indexOf(alias) !== -1) {
+      input = entryUrl;
+    }
+  }
+
+  const mbfcEntry = Object.values(sources).find(entry => {
+    return entry.d === input ||
+         input.startsWith(`https://${entry.d}`)
+      || input.startsWith(`https://www.${entry.d}`)
+      || input.startsWith(`http://${entry.d}`)
+      || input.startsWith(`http://www.${entry.d}`)
+      || input.startsWith(entry.d)
+      || entry.f === input
+      || String(entry.n).toLowerCase() === input
+      || `the ${String(entry.n).toLowerCase()}` === input
+      || entry.u === input
+      || String(entry.u).replace('-', '') === input
+      || String(entry.u).replace('-', ' ') === input;
+  });
+  if (mbfcEntry !== undefined) {
+    return createEmbed(mbfcEntry);
+  }
+  throw 'No MBFC result found';
 }
 
 module.exports = {
-  mbfcFromURL,
+  getMbfcEntry
 };

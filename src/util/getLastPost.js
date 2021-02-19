@@ -6,7 +6,7 @@ async function getLastPost(channel) {
   const messages = (await channel.messages.fetch({limit: 3}))
     .array()
     .filter(m => m.author.id !== channel.client.user.id);
-  return messages[1];
+  return messages[1]; // messages[0] is the command invocation
 }
 
 module.exports = { getLastPost }

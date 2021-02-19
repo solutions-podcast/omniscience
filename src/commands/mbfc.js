@@ -5,7 +5,7 @@
 
 const { Command } = require('discord-akairo');
 const { getLastPost } = require('../util/getLastPost');
-const { mbfcFromURL } = require('../util/mbfc');
+const { getMbfcEntry } = require('../util/mbfc');
 
 class MbfcCommand extends Command {
   constructor() {
@@ -19,11 +19,28 @@ class MbfcCommand extends Command {
     // const lastPost = await getLastPost(message.channel);
     // return message.reply(lastPost.content);
     try {
-      const result = mbfcFromURL(input);
-      console.log(result);
+      if(!input) {
+        const lastPost = (await getLastPost(message.channel)).toString();
+        const url = lastPost.split(' ').find(word => word.startsWith('http'));
+        if(url) {
+          input = url;
+        }
+        else {
+          throw 'No input given';
+        }
+      }
+      const result = getMbfcEntry(input);
       return message.channel.send(result);
-    } catch {
-      return message.channel.send(`No MBFC result found for "${input}"`);
+    } catch(e) {
+      if(e === 'No input given') {
+        return message.channel.send('No input given');
+      }
+      else if(e === 'No MBFC result found') {
+        return message.channel.send(`No MBFC result found for "${input}"`);
+      }
+      else {
+        console.error(e);
+      }
     }
   }
 }
