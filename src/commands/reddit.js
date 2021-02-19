@@ -18,6 +18,10 @@ class RedditCommand extends Command {
   }
 
   async exec(message, { input }) {
+    if(input.indexOf('<') !== -1) {
+      return message.channel.send('Hey! Don\'t use <angle brackets> in your command invocations! Try again.');
+    }
+
     const [subredditName, ...queryWords] = input.split(' ');
     const query = queryWords.join(' ');
 

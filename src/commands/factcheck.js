@@ -26,6 +26,10 @@ class FactCheckCommand extends Command {
 
     const query = input;
 
+    if(query.indexOf('<') !== -1) {
+      return message.channel.send('Hey! Don\'t use <angle brackets> in your command invocations! Try again.');
+    }
+
     const factCheck = google.factchecktools({
       version: 'v1alpha1',
       auth: config.google.apiKey,

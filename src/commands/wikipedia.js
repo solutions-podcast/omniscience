@@ -15,6 +15,9 @@ class WikipediaCommand extends Command {
   }
 
   async exec(message, { lang, query }) {
+    if(query.indexOf('<') !== -1) {
+      return message.channel.send('Hey! Don\'t use <angle brackets> in your command invocations! Try again.');
+    }
     await message.channel.send(
       await getWikiEmbed(
         query,

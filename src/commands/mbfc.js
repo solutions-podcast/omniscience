@@ -16,8 +16,10 @@ class MbfcCommand extends Command {
   }
 
   async exec(message, { input }) {
-    // const lastPost = await getLastPost(message.channel);
-    // return message.reply(lastPost.content);
+    if(input.indexOf('<') !== -1) {
+      return message.channel.send('Hey! Don\'t use <angle brackets> in your command invocations! Try again.');
+    }
+
     try {
       if(!input) {
         const lastPost = (await getLastPost(message.channel)).toString();
