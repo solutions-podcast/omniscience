@@ -48,9 +48,9 @@ Soon we will have a Project set up inside this repo where you can look at our ro
 3. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new bot. Invite this bot to your new server (it will be offline for now). Save the bot token for the next step.
 4. Clone this repo
 5. In the cloned repo, copy  `.env.example` to `.env` and fill in the following secrets:
-  a. `BOT_PREFIX` = A prefix of your choice, e.g. `!`
-  b. `DISCORD_API_TOKEN` = Your Discord bot token from the previous step
-  c. Fill in any other [API tokens](.env.example) necessary for what you're working on (e.g. a Reddit token if you're working on Reddit commands)
+    - `BOT_PREFIX` = A prefix of your choice, e.g. `!`
+    - `DISCORD_API_TOKEN` = Your Discord bot token from the previous step
+    - Fill in any other [API tokens](.env.example) necessary for what you're working on (e.g. a Reddit token if you're working on Reddit commands)
 4. Run `npm install` in this directory
 5. Run `npm run dev`
 6. You should now see your bot online and ready to accept commands! Try sending it the "ping" command (your prefix + `ping`), and it should reply with "Pong".
