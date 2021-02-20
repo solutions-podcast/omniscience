@@ -12,7 +12,6 @@ This is a bot that looks up useful research information on any topic. Primarily 
 - [x] RationalWiki
 - [ ] YouTube
   - [ ] Crash Course
-  - [ ] Khan Academy
 - [ ] Google Scholar
 - [ ] ProPublica (Congress bills)
 - [x] Google Fact Check API
