@@ -6,38 +6,37 @@ This is a bot that looks up useful research information on any topic. Primarily 
 
 ## Search Engines
 
-- Wikipedia
-- Merriam-Webster
-- Reddit
-- Reddit Wiki (getWikiPages())
-- RationalWiki
-- YouTube
-  - Crash Course
-  - Khan Academy
-- Google Scholar
-- ProPublica (Congress bills)
-- Google Fact Check API
-- Stocks (Alpha Vantage or Polygon)
-- [SEP](https://github.com/AFFogarty/SEP-Bot/blob/master/reddit-bot/sep/sep_search_result.py#L25)
-- Charity Navigator
+- [x] Wikipedia
+- [ ] Merriam-Webster
+- [x] Reddit
+- [x] RationalWiki
+- [ ] YouTube
+  - [ ] Crash Course
+  - [ ] Khan Academy
+- [ ] Google Scholar
+- [ ] ProPublica (Congress bills)
+- [x] Google Fact Check API
+- [x] Media Bias Fact Check
+- [ ] Stocks (Alpha Vantage or Polygon)
+- [ ] [SEP](https://github.com/AFFogarty/SEP-Bot/blob/master/reddit-bot/sep/sep_search_result.py#L25)
+- [ ] Charity Navigator
 
 ## Other Useful Data
 
-- Awesome Public Datasets
-- Census.gov
-- COVID Data
-- Data.gov
-- Logical Fallacies (Fallacy.in)
-- [Our World In Data](https://github.com/owid)
-- USASpending.gov (includes debt)
-- US Bureau of Labor Statistics (unemployment, etc)
-- World Bank
+- [ ] Awesome Public Datasets
+- [ ] Census.gov
+- [ ] COVID Data
+- [ ] Data.gov
+- [ ] Logical Fallacies (Fallacy.in)
+- [ ] [Our World In Data](https://github.com/owid)
+- [ ] USASpending.gov (includes debt)
+- [ ] US Bureau of Labor Statistics (unemployment, etc)
+- [ ] World Bank
 
 ## Utilities
 
-- MBFC (https://raw.githubusercontent.com/drmikecrowe/mbfcext/master/docs/v2/combined.json)
-- Outline.com
-- Sci-Hub
+- [ ] Outline.com
+- [ ] Sci-Hub
 
 # Contributing
 
@@ -52,7 +51,7 @@ Soon we will have a Project set up inside this repo where you can look at our ro
 5. In the cloned repo, copy  `.env.example` to `.env` and fill in the following secrets:
   a. `BOT_PREFIX` = A prefix of your choice, e.g. `!`
   b. `DISCORD_API_TOKEN` = Your Discord bot token from the previous step
-  c. Fill in any other API tokens necessary for what you're working on (e.g. a Reddit token if you're working on Reddit commands)
+  c. Fill in any other [API tokens](.env.example) necessary for what you're working on (e.g. a Reddit token if you're working on Reddit commands)
 4. Run `npm install` in this directory
 5. Run `npm run dev`
 6. You should now see your bot online and ready to accept commands! Try sending it the "ping" command (your prefix + `ping`), and it should reply with "Pong".
